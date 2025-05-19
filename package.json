@@ -1,5 +1,21 @@
 {
+  "name": "cache-code",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd cache-code && npm run dev",
+    "build": "cd cache-code && npm run build",
+    "start": "cd cache-code && npm run start"
+  },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.51.0",
+    "@sanity/client": "^7.2.1",
+    "framer-motion": "^12.11.0",
     "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.0"
   }
 }

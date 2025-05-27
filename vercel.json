@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd cache-code && npm install && npm run build",
+  "outputDirectory": "cache-code/out",
+  "installCommand": "npm install",
+  "framework": null
+} 

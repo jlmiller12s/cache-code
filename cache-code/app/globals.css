@@ -7,9 +7,116 @@
   --dark-green: #0a2d0a;
 }
 
+/* Base styles */
 body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles (default) */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  body {
+    color: #1f2937;
+    background: #f9fafb;
+  }
+}
+
+/* Class-based dark mode */
+.dark body {
   color: white;
   background: black;
+}
+
+/* Class-based light mode */
+html:not(.dark) body {
+  color: #1f2937;
+  background: #f9fafb;
+}
+
+/* Light mode color overrides */
+html:not(.dark) .bg-black {
+  background-color: #f3f4f6;
+}
+
+html:not(.dark) .bg-gray-800 {
+  background-color: #e5e7eb;
+}
+
+html:not(.dark) .bg-gray-900 {
+  background-color: #d1d5db;
+}
+
+html:not(.dark) .text-white {
+  color: #111827;
+}
+
+html:not(.dark) .text-gray-400 {
+  color: #6b7280;
+}
+
+html:not(.dark) .text-gray-300 {
+  color: #9ca3af;
+}
+
+html:not(.dark) .text-gray-200 {
+  color: #4b5563;
+}
+
+html:not(.dark) .border-gray-800 {
+  border-color: #d1d5db;
+}
+
+html:not(.dark) .bg-\[#0a2d0a\] {
+  background-color: #dcfce7;
+}
+
+html:not(.dark) .from-\[#0a2d0a\] {
+  --tw-gradient-from: #dcfce7;
+}
+
+html:not(.dark) .to-\[#051505\] {
+  --tw-gradient-to: #ecfdf5;
+}
+
+html:not(.dark) .hover\:text-\[#15ff15\]:hover {
+  color: #059212;
+}
+
+/* Additional light mode refinements */
+html:not(.dark) .bg-black\/30 {
+  background-color: rgba(229, 231, 235, 0.5);
+}
+
+html:not(.dark) .bg-black\/20 {
+  background-color: rgba(229, 231, 235, 0.3);
+}
+
+html:not(.dark) .from-gray-900 {
+  --tw-gradient-from: #e5e7eb;
+}
+
+html:not(.dark) .to-gray-800 {
+  --tw-gradient-to: #f3f4f6;
+}
+
+/* Scrollbar for light mode */
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #059212;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: #047609;
 }
 
 /* Apply Blacky font to all H1 tags */

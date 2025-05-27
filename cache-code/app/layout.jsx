@@ -3,29 +3,62 @@ import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import Image from 'next/image';
 import localFont from 'next/font/local';
+import Analytics from '../components/Analytics';
+import { ThemeProvider } from '../contexts/ThemeContext';
+import ThemeToggle from '../components/ThemeToggle';
 
 const inter = Inter({ subsets: ['latin'] });
 
 // Define local Blacky font
 const blacky = localFont({
-  src: [
-    {
-      path: './fonts/Blacky.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './fonts/Blacky.otf',
-      weight: '400',
-      style: 'normal',
-    }
-  ],
-  variable: '--font-blacky'
+  src: "./fonts/Blacky.ttf",
+  variable: "--font-blacky",
+  weight: "400",
+  style: "italic",
+  display: "swap",
 });
 
 export const metadata = {
-  title: 'Cache Code - Where Knowledge is Stored and Shared',
-  description: 'A tech platform featuring articles, tutorials, courses and resources for developers.',
+  title: {
+    default: 'Cache Code - Where Knowledge is Stored and Shared',
+    template: '%s | Cache Code'
+  },
+  description: 'Cache Code is your hub for quality tech content, tutorials, and resources. Learn programming, web development, and tech skills from expert-curated content.',
+  keywords: ['programming', 'web development', 'tutorials', 'tech content', 'coding', 'software development'],
+  authors: [{ name: 'Cache Code Team' }],
+  creator: 'Cache Code',
+  publisher: 'Cache Code',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://www.thecachecode.com'),
+  openGraph: {
+    title: 'Cache Code - Where Knowledge is Stored and Shared',
+    description: 'Your hub for quality tech content, tutorials, and resources.',
+    url: 'https://www.thecachecode.com',
+    siteName: 'Cache Code',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cache Code - Where Knowledge is Stored and Shared',
+    description: 'Your hub for quality tech content, tutorials, and resources.',
+    creator: '@cachecode',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32' },
@@ -44,7 +77,9 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/favicon.svg" />
       </head>
       <body className={`${inter.className} ${blacky.variable}`}>
-        <header className="sticky top-0 z-50 w-full bg-black py-4 px-6 border-b border-[#15ff15]/20">
+        <ThemeProvider>
+          <Analytics />
+                  <header className="sticky top-0 z-50 w-full bg-black dark:bg-black py-4 px-6 border-b border-[#15ff15]/20 transition-colors duration-300">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <Link href="/" className="flex items-center space-x-2">
               <div className="relative w-10 h-10">
@@ -83,6 +118,8 @@ export default function RootLayout({ children }) {
                   <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
               </Link>
+              
+              <ThemeToggle />
               
               <button className="md:hidden text-white hover:text-[#15ff15] transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -217,6 +254,7 @@ export default function RootLayout({ children }) {
             <p>© {new Date().getFullYear()} Cache Code. All rights reserved.</p>
           </div>
         </footer>
+        </ThemeProvider>
       </body>
     </html>
   );

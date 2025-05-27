@@ -1,26 +1,86 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import Newsletter from '../components/Newsletter';
+import ArticleCard from '../components/ArticleCard';
+import HeroVideo from '../components/HeroVideo';
+import YouTubeShorts from '../components/YouTubeShorts';
 
 export default function Home() {
+  // Sample article data - replace with real data later
+  const articles = [
+    {
+      id: 1,
+      title: "Getting Started with Next.js 15",
+      description: "Learn the basics of Next.js 15 and build your first application with the App Router.",
+      slug: "getting-started-nextjs-15",
+      category: "Tutorial",
+      date: "2024-01-15",
+      readTime: 5,
+      thumbnail: null
+    },
+    {
+      id: 2,
+      title: "Understanding React Server Components",
+      description: "Deep dive into React Server Components and how they change the way we build React applications.",
+      slug: "react-server-components",
+      category: "Article",
+      date: "2024-01-10",
+      readTime: 8,
+      thumbnail: null
+    },
+    {
+      id: 3,
+      title: "Tailwind CSS Best Practices",
+      description: "Tips and tricks for writing maintainable and scalable CSS with Tailwind.",
+      slug: "tailwind-best-practices",
+      category: "Guide",
+      date: "2024-01-05",
+      readTime: 6,
+      thumbnail: null
+    },
+    {
+      id: 4,
+      title: "Building APIs with Next.js",
+      description: "Create powerful API routes using Next.js App Router and integrate with databases.",
+      slug: "nextjs-api-routes",
+      category: "Tutorial",
+      date: "2024-01-03",
+      readTime: 10,
+      thumbnail: null
+    },
+    {
+      id: 5,
+      title: "State Management in Modern React",
+      description: "Compare different state management solutions for React applications in 2024.",
+      slug: "react-state-management",
+      category: "Article",
+      date: "2024-01-01",
+      readTime: 12,
+      thumbnail: null
+    },
+    {
+      id: 6,
+      title: "Web Performance Optimization",
+      description: "Essential techniques to make your web applications faster and more efficient.",
+      slug: "web-performance-tips",
+      category: "Guide",
+      date: "2023-12-28",
+      readTime: 7,
+      thumbnail: null
+    }
+  ];
+
   return (
     <main className="flex min-h-screen flex-col items-center">
       {/* Hero Section */}
       <div className="w-full h-screen bg-[#0a2d0a] relative overflow-hidden flex flex-col items-center justify-center">
         {/* Video Background */}
-        <div className="hero-video-container">
-          <video 
-            className="hero-video"
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-          >
-            {/* Replace this with your actual video once you have it */}
-            <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4" />
-            Your browser does not support HTML5 video.
-          </video>
-          <div className="dots-overlay"></div>
-        </div>
+        <HeroVideo 
+          videoSrc="https://assets.codepen.io/3364143/7btrrd.mp4"
+          posterSrc="/cache-code-official-logo.svg"
+        />
         
         {/* Matrix-like background as fallback */}
         <div className="absolute inset-0 opacity-20 z-0 bg-matrix"></div>
@@ -79,38 +139,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Quality Tech Content Section */}
-      <section className="w-full py-24 px-4 bg-black text-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-5xl font-thin italic mb-16 font-blacky">#QUALITY TECH CONTENT</h2>
-          
-          <div className="flex flex-wrap justify-center gap-8">
-            <Link href="/blog" className="group">
-              <div className="w-64 h-64 bg-[#0a2d0a] rounded-lg flex items-center justify-center group-hover:bg-[#15ff15] transition-colors duration-300">
-                <span className="text-2xl font-bold text-white group-hover:text-black">Blog</span>
-              </div>
-            </Link>
-            
-            <Link href="/tutorials" className="group">
-              <div className="w-64 h-64 bg-[#0a2d0a] rounded-lg flex items-center justify-center group-hover:bg-[#15ff15] transition-colors duration-300">
-                <span className="text-2xl font-bold text-white group-hover:text-black">Tutorials</span>
-              </div>
-            </Link>
-            
-            <Link href="/courses" className="group">
-              <div className="w-64 h-64 bg-[#0a2d0a] rounded-lg flex items-center justify-center group-hover:bg-[#15ff15] transition-colors duration-300">
-                <span className="text-2xl font-bold text-white group-hover:text-black">Courses</span>
-              </div>
-            </Link>
-            
-            <Link href="/resources" className="group">
-              <div className="w-64 h-64 bg-[#0a2d0a] rounded-lg flex items-center justify-center group-hover:bg-[#15ff15] transition-colors duration-300">
-                <span className="text-2xl font-bold text-white group-hover:text-black">Resources</span>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Quality Tech Content Section with YouTube Shorts */}
+      <YouTubeShorts />
 
       {/* Featured Articles Section */}
       <section className="w-full py-24 px-4 bg-[#0a2d0a] text-white">
@@ -118,27 +148,17 @@ export default function Home() {
           <h2 className="text-3xl font-thin italic mb-12 text-center font-blacky">Recent Articles</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="bg-black/30 rounded-lg overflow-hidden group">
-                <div className="aspect-video bg-gray-800 relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-[#15ff15]">Thumbnail {item}</span>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-[#15ff15] transition-colors">
-                    Article Title Goes Here {item}
-                  </h3>
-                  <p className="text-gray-300 text-sm">
-                    Short description of the article or product. This is just some placeholder text.
-                  </p>
-                  <div className="mt-4">
-                    <Link href={`/article/${item}`} className="inline-block px-4 py-2 bg-[#15ff15] text-black font-bold rounded hover:bg-[#0aff0a] transition-colors">
-                      Read More
-                    </Link>
-                  </div>
-                </div>
-              </div>
+            {articles.map((article) => (
+              <ArticleCard 
+                key={article.id} 
+                title={article.title}
+                description={article.description}
+                slug={article.slug}
+                category={article.category}
+                date={article.date}
+                readTime={article.readTime}
+                thumbnail={article.thumbnail}
+              />
             ))}
           </div>
           
@@ -151,29 +171,7 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="w-full py-24 px-4 bg-black text-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-thin italic mb-6 font-blacky">Subscribe to Our Newsletter</h2>
-          <p className="text-gray-300 mb-8">
-            Stay updated with the latest articles, tutorials, and resources.
-          </p>
-          
-          <form className="flex flex-col md:flex-row gap-4">
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              className="flex-1 px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#15ff15]"
-              required
-            />
-            <button 
-              type="submit"
-              className="px-6 py-3 bg-[#15ff15] text-black font-bold rounded-lg hover:bg-[#0aff0a] transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </section>
+      <Newsletter />
     </main>
   );
 } 

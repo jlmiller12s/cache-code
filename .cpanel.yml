@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/yourusername/public_html/thecachecode.com
+    - /bin/cp -R cache-code/* $DEPLOYPATH
+    - cd $DEPLOYPATH
+    - /usr/local/bin/npm install --production
+    - /usr/local/bin/npm run build 

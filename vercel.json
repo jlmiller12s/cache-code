@@ -1,6 +1,7 @@
 {
-  "buildCommand": "cd cache-code && npm install && npm run build",
-  "outputDirectory": "cache-code/out",
-  "installCommand": "echo 'Skipping install - handled in buildCommand'",
+  "rootDirectory": "cache-code",
+  "buildCommand": "npm run build",
+  "outputDirectory": "out",
+  "installCommand": "npm install",
   "framework": null
 } 

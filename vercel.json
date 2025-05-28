@@ -1,6 +1,6 @@
 {
   "rootDirectory": "cache-code",
-  "buildCommand": "npm run build",
+  "buildCommand": "npx next build",
   "outputDirectory": "out",
   "installCommand": "npm install",
   "framework": null

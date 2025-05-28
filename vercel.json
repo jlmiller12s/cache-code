@@ -1,7 +1,6 @@
 {
-  "rootDirectory": "cache-code",
-  "buildCommand": "npx next build",
-  "outputDirectory": "out",
-  "installCommand": "npm install",
+  "installCommand": "cd cache-code && npm install",
+  "buildCommand": "cd cache-code && npx next build",
+  "outputDirectory": "cache-code/out",
   "framework": "nextjs"
 } 

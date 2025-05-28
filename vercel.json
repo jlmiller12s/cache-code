@@ -1,6 +1,3 @@
 {
-  "installCommand": "cd cache-code && npm install",
-  "buildCommand": "cd cache-code && npx next build",
-  "outputDirectory": "cache-code/out",
   "framework": "nextjs"
 } 

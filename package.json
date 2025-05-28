@@ -1,21 +1,34 @@
 {
   "name": "cache-code",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cd cache-code && npm run dev",
-    "build": "cd cache-code && npm run build",
-    "start": "cd cache-code && npm run start"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "production": "NODE_ENV=production node server.js",
+    "lint": "next lint"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.51.0",
     "@sanity/client": "^7.2.1",
-    "framer-motion": "^12.11.0",
-    "gsap": "^3.13.0"
+    "gsap": "^3.13.0",
+    "next": "15.3.2",
+    "next-sanity": "^9.11.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.0"
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }
